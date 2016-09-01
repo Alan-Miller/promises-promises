@@ -2,26 +2,19 @@ angular.module('app').service('service1', function($q, $timeout,$http){
     //Basic example
     
     this.getMeAUnicorn = function(){
-        var deferredObject = $q.defer();
-        
-        $timeout(function(){
-            
-            var boxOfToys = {
-                squirrels: "Nut breaking kind",
-                goldedGoose: "Really golden",
-                snozberries: "Super Snozzy"
-            }
-            
-            deferredObject.resolve(boxOfToys);
-            
-            //deferredObject.reject
-        }, 1);
-        //  
-        
-        return deferredObject.promise;
+       var deferObj = $q.defer();
+       
+       $timeout(function(){
+           deferObj.resolve("A sparkly unicorn");
+       }, 4000);
+       
+       
+       return deferObj.promise;
     }
     
 });
+
+
 
 
 
@@ -38,6 +31,7 @@ angular.module('app').service('pokemonService', function($http, $q){
         //if pokemeon
         if(pokeCenterPokemon){
             //resolve pokemon
+            // return pokeCenterPokemon;
             defer.resolve(pokeCenterPokemon);   
         }
         else {
@@ -47,8 +41,8 @@ angular.module('app').service('pokemonService', function($http, $q){
                 //resolve pokemon
             
             httpPromise.then(function(pokemon){
-                  defer.resolve(pokemon.data);
                   pokeCenterPokemon = pokemon.data;
+                  defer.resolve(pokemon.data);
             })
         }
     
@@ -57,11 +51,11 @@ angular.module('app').service('pokemonService', function($http, $q){
     }
 });
 
-angular.module('app').service('multiPointDataService', function($http, $q){
-    // Multi-data example
+// angular.module('app').service('multiPointDataService', function($http, $q){
+//     // Multi-data example
     
     
-});
+// });
 
 
 
